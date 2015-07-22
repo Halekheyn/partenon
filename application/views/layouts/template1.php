@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 
-	<title><?php echo $this->layout->getTitle();?></title>
+    <title><?php echo $this->layout->getTitle();?></title>
     <meta name="description" content="<?php echo $this->layout->getDescripcion();?>">
-	<meta name="keywords" content="<?php echo $this->layout->getKeywords(); ?>" />
+    <meta name="keywords" content="<?php echo $this->layout->getKeywords(); ?>" />
 
     <meta charset="utf-8">
 
@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url()?>public/css/ie.css">
       
     <!-- Auxiliares CSS-->
-	<?php echo $this->layout->css; ?> 
-	<!-- Fin Auxiliares CSS -->
+    <?php echo $this->layout->css; ?> 
+    <!-- Fin Auxiliares CSS -->
     
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif&subset=latin' rel='stylesheet' type='text/css'>
 
@@ -41,9 +41,24 @@
 	<![endif]-->
     
 </head>
-
-
 <body>
+<?php
+if($this->session->flashdata('msg') != '')
+{
+   $tipo = $this->session->flashdata('tipo');
+   $msg = $this->session->flashdata('msg');
+   $valSpan = 'class="'.$this->session->flashdata('val').'"';
+
+   $msgBox = "<div id='msg' >
+                <div class='$tipo'>$msg</div>                                                   
+             </div> ";                                                     
+ }
+else
+{
+    $msgBox = '';
+    $valSpan = '';
+}
+?> 
 <div class="main">
 	
     <div class="bg-img"></div>

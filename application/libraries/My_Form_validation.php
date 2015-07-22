@@ -33,7 +33,7 @@ class My_Form_validation extends CI_Form_validation
 	}
 	
 	public function v_texto($cadena){ 
-		if (ereg("^[a-zñA-ZÑ ]*$", $cadena))
+		if (preg_match("/^[a-zñA-ZÑ ]*$/", $cadena))
 		{ 
 		  return true; 
 		} else { 
