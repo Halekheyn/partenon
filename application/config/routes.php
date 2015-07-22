@@ -38,9 +38,13 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "index";
 $route['404_override'] = '';
 
+//URL Personalizadas
 
+$route['index']= "index/index";
+$route['nosotros']= "index/nosotros";
+$route['contactenos']= "index/contactenos";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
