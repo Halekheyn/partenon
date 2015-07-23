@@ -144,7 +144,7 @@ dl dd a:hover {text-decoration:underline; color:#333;}
 
 /*Botones */
 
-.boton_img{
+.btnImg{
 	cursor:pointer;
 	width:28px;
 	height:28px;
@@ -152,7 +152,7 @@ dl dd a:hover {text-decoration:underline; color:#333;}
 	border:none !important;
 }
 
-.boton_img:hover{
+.btnImg:hover{
 	width:35px;
 	height:35px;
 }
