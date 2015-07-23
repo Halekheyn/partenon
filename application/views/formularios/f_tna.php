@@ -3,8 +3,7 @@ if($this->session->flashdata('msg') != '')
 {
    $tipo = $this->session->flashdata('tipo');
    $msg = $this->session->flashdata('msg');
-   $valSpan = 'class="'.$this->session->flashdata('val').'"';
-
+   $fdNomTna = $this->session->flashdata('nomTna');  
    $msgBox = "<div id='msg' >
                 <div class='$tipo'>$msg</div>                                                   
              </div> ";                                                     
@@ -12,7 +11,7 @@ if($this->session->flashdata('msg') != '')
 else
 {
     $msgBox = '';
-    $valSpan = '';
+    $fdNomTna = '';
 }
 ?> 
 <section id="content">
@@ -46,13 +45,15 @@ else
                                 $inpNomTna = array(					
                                                     'name'	=>  'inpNomTna',
                                                     'id'	=>  'inpNomTna',
-                                                    'value'	=>  set_value('inpNomTna'),
+                                                    'value'	=>  $fdNomTna,
                                                     'maxlength'	=>  '30',
                                                     'size'	=>  '20'
                                                     );
                                 echo form_input($inpNomTna);
                                 ?>                                     
-                                <?php echo form_error('inpNomTna', '<span '.$valSpan.'>', '</span');?>  '                                                                   
+                                <?php if($msgBox == ''){                            
+                                    echo form_error('inpNomTna', '<span class="val_span">', '</span');
+                                }?>                                                                   
                                 </td>                                    
                             </tr>
                             <tr>                        
