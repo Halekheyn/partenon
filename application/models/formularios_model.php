@@ -7,10 +7,10 @@ class formularios_model extends CI_Model
         parent::__construct();
     }	
    /*-----------  TIPO NIVEL ACADEMICO  -----------------*/	
-    public function insertar_tna($in_tna=array(),$nom)
+    public function mSaveTna($dataTna=array(),$nomTna)
     {	
-        $where=array('tna_nom'=>$nom);
-		$query=$this->db
+        $where=array('tna_nom'=>$nomTna);
+	$query=$this->db
         ->select("tna_nom")
         ->from("tipo_nivel_academico")
         ->where($where)
@@ -20,10 +20,10 @@ class formularios_model extends CI_Model
         {			
             return $query->result();
         }else{
-            $this->db->insert("tipo_nivel_academico",$in_tna);						
+            $this->db->insert("tipo_nivel_academico",$dataTna);						
             return $query->result();		
         }		 
-    }   
+    } /*  
     public function buscar_tna($nom)
     {
         $query=$this->db
@@ -59,8 +59,8 @@ class formularios_model extends CI_Model
         $this->db->update("tipo_nivel_academico");
     	return true;
     }
-      
-    public function listar_tna($di_tna=array())
+      */
+    public function listTna($di_tna=array())
     {		 
         $query=$this->db
         ->select("tna_cod,tna_nom")
@@ -69,7 +69,7 @@ class formularios_model extends CI_Model
         //echo $this->db->last_query();
         return $query->result();
     }
-   
+   /*
     public function eliminar_tna($di_tna=array())
     {		 
         $query=$this->db
@@ -78,5 +78,5 @@ class formularios_model extends CI_Model
 	->get();
         //echo $this->db->last_query();
         return $query->result();
-    }
+    }*/
 }

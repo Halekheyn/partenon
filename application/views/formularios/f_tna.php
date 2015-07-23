@@ -14,7 +14,7 @@ else
     $msgBox = '';
     $valSpan = '';
 }
-?>  
+?> 
 <section id="content">
     <div class="container_12">          
         <div class="grid_12 top-1">
@@ -33,42 +33,42 @@ else
                         {
                                 $nombre = "";	
                         }*/									
-                        $atributos = array('id' => 'form_tna','name' => 'form_tna');
+                        $atributos = array('id' => 'formTna','name' => 'formTna');
                         echo form_open(base_url().'formularios/f_tna',$atributos);
                         ?>  			                                                  
                         <table>   
                             <tr >
                                 <td>
-                                <?php echo form_label('Nombre:','i_nom_tna')?>
+                                <?php echo form_label('Nombre:','inpNomTna')?>
                                 </td>
                                 <td align="left">
                                 <?php 
-                                $i_nom_tna = array(					
-                                                    'name'		=>	'i_nom_tna',
-                                                    'id'		=>	'i_nom_tna',
-                                                    'value'		=>	set_value('i_nom_tna'),
-                                                    'maxlength'	=>	'30',
-                                                    'size'		=>	'20'
+                                $inpNomTna = array(					
+                                                    'name'	=>  'inpNomTna',
+                                                    'id'	=>  'inpNomTna',
+                                                    'value'	=>  set_value('inpNomTna'),
+                                                    'maxlength'	=>  '30',
+                                                    'size'	=>  '20'
                                                     );
-                                echo form_input($i_nom_tna);
+                                echo form_input($inpNomTna);
                                 ?>                                     
-                                <?php echo form_error('i_nom_tna', '<span '.$valSpan.'>', '</span');?>                                                                     
+                                <?php echo form_error('inpNomTna', '<span '.$valSpan.'>', '</span');?>  '                                                                   
                                 </td>                                    
                             </tr>
                             <tr>                        
                                 <td colspan="2">
-                                <div class="form-icono" >
+                                <div class="form-icono">
                                 <?php
-                                $bguardar_tna = array(
+                                $btnSaveTna = array(
                                                     'type'		=>	'image',
-                                                    'class'		=>	'boton_img',
-                                                    'name'		=>	'bguardar_tna',
-                                                    'id'		=>	'bguardar_tna',
-                                                    'value'		=>	'bguardar_tna',
+                                                    'class'		=>	'btnImg',
+                                                    'name'		=>	'btnSaveTna',
+                                                    'id'		=>	'btnSaveTna',
+                                                    'value'		=>	'btnSaveTna',
                                                     'title'		=>	'Guardar',												
                                                     'src'		=>	base_url().'public/css/images/guardar.png'
                                                     );
-                                    echo form_input($bguardar_tna);
+                                    echo form_input($btnSaveTna);
                                 ?>
                                 </div>
                                 </td>                                                                     
@@ -81,7 +81,7 @@ else
                 </div>
                 <?php
                 echo $msgBox;
-                if($listar_datos > 0)
+                if($listTna > 0)
                 { ?>
                 <div class="listar-registros"> 
                     <table>   
@@ -92,7 +92,7 @@ else
                     </tr>
                     <?php
                     $cont = 1;	
-                    foreach($listar_datos as $dato)
+                    foreach($listTna as $datoTna)
                     {
                         //Aplicar el background intermedio
                         $mod = $cont/2 ;
@@ -101,18 +101,18 @@ else
                         ?>	
                         <tr <?php echo $img ?> onMouseOver="this.className='listar-resaltar'" onMouseOut="this.className='<?php echo $class ?>'"	 > 
                             <td><?php echo $cont ?></td>
-                            <td><?php echo $dato->tna_nom ?></td>														   
+                            <td><?php echo $datoTna->tna_nom ?></td>														   
                             <td>
                                 <div>										
-                                    <a id="eliminar" href="<?php echo base_url() ?>formularios/f_tna/<?php echo $dato->tna_cod ?>">
-                                    <img src="<?php echo base_url() ?>public/css/images/editar.png" class="action" id="b_g_equi_tipo" title="Editar">
+                                    <a id="linkEditTna" href="<?php echo base_url() ?>formularios/f_tna/<?php echo $datoTna->tna_cod ?>">
+                                    <img src="<?php echo base_url() ?>public/css/images/editar.png" class="action" id="imgEditTna" title="Editar">
                                     </a> 
                                 </div>  
                             </td>                               
                             <td>
                                 <div>	
-                                    <a id="b_equi_tipo" onclick="b_form_equi_tipo();return false">
-                                    <img src="<?php echo base_url() ?>public/css/images/suprimir.png" class="action" id="b_b_equi_tipo" title="Eliminar">
+                                    <a id="linkSuprTna" onclick="b_form_equi_tipo();return false">
+                                    <img src="<?php echo base_url() ?>public/css/images/suprimir.png" class="action" id="imgSuprTna" title="Eliminar">
                                     </a>
                                 </div>
                             </td>																		                                 
@@ -126,10 +126,11 @@ else
                 ?><br />
                 <div id="msg">
                     <div class="info">
-                            No hay registros para mostrar
+                        No hay registros para mostrar
                     </div>                                                   
                 </div>
                 <?php }	?>	
+            <br><br>
             </div>                    
         </div>
     </div>

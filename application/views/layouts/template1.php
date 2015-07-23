@@ -42,23 +42,6 @@
     
 </head>
 <body>
-<?php
-if($this->session->flashdata('msg') != '')
-{
-   $tipo = $this->session->flashdata('tipo');
-   $msg = $this->session->flashdata('msg');
-   $valSpan = 'class="'.$this->session->flashdata('val').'"';
-
-   $msgBox = "<div id='msg' >
-                <div class='$tipo'>$msg</div>                                                   
-             </div> ";                                                     
- }
-else
-{
-    $msgBox = '';
-    $valSpan = '';
-}
-?> 
 <div class="main">
 	
     <div class="bg-img"></div>

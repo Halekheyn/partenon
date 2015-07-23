@@ -11,25 +11,25 @@ class Formularios extends CI_Controller {
     /*----------TIPO NIVEL ACADEMICO---------------*/
     public function f_tna($cod=null)
     {				
-        $listar_datos=$this->formularios_model->listar_tna();
+        $listTna = $this->formularios_model->listTna();
         				
         //---Guardar
-        if($this->input->post('bguardar_tna'))
+        if($this->input->post('btnSaveTna'))
         {						
             if($this->form_validation->run('formularios/f_tna'))
             {
-                $nom = ucwords($this->input->post('i_nom_tna',true));
-                $data=array(
+                $nomTna = ucwords($this->input->post('inpNomTna',true));
+                $dataTna=array(
                             'tna_cod' => '',
-                            'tna_nom' => $nom
+                            'tna_nom' => $nomTna
                            );
 
-                $guardar = $this->formularios_model->insertar_tna($data,$nom);
-                if($guardar)
+                $saveTna = $this->formularios_model->mSaveTna($dataTna,$nomTna);
+                if($saveTna)
                 {
                     $msgFd = array(
                                 'tipo'  => 'error',
-                                'msg'   => 'El nombre '.$nom.' ya existe.',
+                                'msg'   => 'El nombre '.$nomTna.' ya existe.',
                                 'val'   => '' 
                                 );
                     $this->session->set_flashdata($msgFd); 
@@ -69,7 +69,7 @@ class Formularios extends CI_Controller {
         //$this->layout->js(array(base_url().'public/js/tms-0.3.js',base_url().'public/js/tms_presets.js',base_url().'public/js/slider_index.js'));
         //Vista
         $var = 0;
-        $this->layout->view('f_tna',compact('var','listar_datos'));		
+        $this->layout->view('f_tna',compact('var','listTna'));		
     }   
 }
 
