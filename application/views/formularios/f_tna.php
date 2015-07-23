@@ -72,6 +72,20 @@ else
                                     echo form_input($btnSaveTna);
                                 ?>
                                 </div>
+                                <div class="form-icono">
+                                <?php
+                                $btnSearchTna = array(
+                                                    'type'		=>	'image',
+                                                    'class'		=>	'btnImg',
+                                                    'name'		=>	'btnSearchTna',
+                                                    'id'		=>	'btnSearchTna',
+                                                    'value'		=>	'btnSearchTna',
+                                                    'title'		=>	'Buscar',												
+                                                    'src'		=>	base_url().'public/css/images/buscar.png'
+                                                    );
+                                    echo form_input($btnSearchTna);
+                                ?>
+                                </div>
                                 </td>                                                                     
                             </tr>
                         </table>		

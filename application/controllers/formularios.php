@@ -13,7 +13,7 @@ class Formularios extends CI_Controller {
     {				
         $listTna = $this->formularios_model->listTna();
         				
-        //---Guardar
+        //---Guardar---
         if($this->input->post('btnSaveTna'))
         {						
             if($this->form_validation->run('formularios/f_tna'))
@@ -44,6 +44,31 @@ class Formularios extends CI_Controller {
                                 );
                     $this->session->set_flashdata($msgFd);
                     redirect(base_url().'formularios/f_tna');             
+                }
+            }            				
+        }
+        //---Buscar---
+        if($this->input->post('btnSearchTna'))
+        {						
+            if($this->form_validation->run('formularios/f_tna'))
+            {
+                $nomTna = ucwords($this->input->post('inpNomTna',true));
+
+                $searchTna = $this->formularios_model->mSearchTna($nomTna);
+                if($searchTna)
+                {
+                    $listTna = $searchTna;
+                }
+                else 
+                {
+                    $msgFd = array(
+                                'tipo'  => 'ref',
+                                'msg'   => 'El nombre '.$nomTna.' no existe.',
+                                'val'   => '',
+                                'nomTna'=> $nomTna
+                                );
+                    $this->session->set_flashdata($msgFd); 
+                    redirect(base_url().'formularios/f_tna');
                 }
             }            				
         }
