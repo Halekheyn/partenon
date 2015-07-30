@@ -23,24 +23,22 @@ class formularios_model extends CI_Model
             $this->db->insert("tipo_nivel_academico",$dataTna);						
             return $query->result();		
         }		 
-    } /*  
-    public function buscar_tna($nom)
+    }
+    public function mSearchTna($nomTna)
     {
         $query=$this->db
-        ->select("tna_nom")
+        ->select("tna_cod,tna_nom")
         ->from("tipo_nivel_academico")
-        ->like('tna_nom',$nom,'after')
+        ->like('tna_nom',$nomTna,'after')
         ->get();
-        echo $this->db->last_query();
+        //echo $this->db->last_query();
         if($query->num_rows() > 0)
         {			
-                return $query->result();
+            return $query->result();
+        }else{				
+            return $query->result();	
         }
-        else
-        {				
-                return $query->result();	
-        }
-    }   
+    }  /* 
     public function act_id_tna($id_act)
     { 
         $where = array('tna_cod'=>$id_act);

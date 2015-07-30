@@ -70,7 +70,7 @@ $config['url_suffix'] = '';
 |
 */
 //$config['language']	= 'english';
-$config['language']	= 'spanish';
+$config['language'] = 'spanish';
 
 /*
 |--------------------------------------------------------------------------
