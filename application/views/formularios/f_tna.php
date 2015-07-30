@@ -32,7 +32,7 @@ else
                         {
                                 $nombre = "";	
                         }*/									
-                        $atributos = array('id' => 'formTna','name' => 'formTna');
+                        $atributos = array('id' => 'formTna','name' => 'formTna', 'onKeypress'=>'if(event.keyCode == 13) event.returnValue = false');
                         echo form_open(base_url().'formularios/f_tna',$atributos);
                         ?>  			                                                  
                         <table>   
@@ -61,13 +61,13 @@ else
                                 <div class="form-icono">
                                 <?php
                                 $btnSaveTna = array(
-                                                    'type'		=>	'image',
-                                                    'class'		=>	'btnImg',
-                                                    'name'		=>	'btnSaveTna',
-                                                    'id'		=>	'btnSaveTna',
-                                                    'value'		=>	'btnSaveTna',
-                                                    'title'		=>	'Guardar',												
-                                                    'src'		=>	base_url().'public/css/images/guardar.png'
+                                                    'type'  =>	'image',
+                                                    'class' =>	'btnImg',
+                                                    'name'  =>	'btnSaveTna',
+                                                    'id'    =>	'btnSaveTna',
+                                                    'value' =>	'btnSaveTna',
+                                                    'title' =>	'Guardar',												
+                                                    'src'   =>	base_url().'public/css/images/guardar.png'
                                                     );
                                     echo form_input($btnSaveTna);
                                 ?>
@@ -75,15 +75,29 @@ else
                                 <div class="form-icono">
                                 <?php
                                 $btnSearchTna = array(
-                                                    'type'		=>	'image',
-                                                    'class'		=>	'btnImg',
-                                                    'name'		=>	'btnSearchTna',
-                                                    'id'		=>	'btnSearchTna',
-                                                    'value'		=>	'btnSearchTna',
-                                                    'title'		=>	'Buscar',												
-                                                    'src'		=>	base_url().'public/css/images/buscar.png'
+                                                    'type'  =>	'image',
+                                                    'class' =>	'btnImg',
+                                                    'name'  =>	'btnSearchTna',
+                                                    'id'    =>	'btnSearchTna',
+                                                    'value' =>	'btnSearchTna',
+                                                    'title' =>	'Buscar',												
+                                                    'src'   =>	base_url().'public/css/images/buscar.png'
                                                     );
                                     echo form_input($btnSearchTna);
+                                ?>
+                                </div>
+                                <div class="form-icono">
+                                <?php
+                                $btnListTna = array(
+                                                    'type'  =>  'image',
+                                                    'class' =>	'btnImg',
+                                                    'name'  =>	'btnListTna',
+                                                    'id'    =>	'btnListTna',
+                                                    'value' =>	'btnListTna',
+                                                    'title' =>	'Listar',												
+                                                    'src'   =>	base_url().'public/css/images/listar.png'
+                                                    );
+                                    echo form_input($btnListTna);
                                 ?>
                                 </div>
                                 </td>                                                                     
@@ -96,7 +110,8 @@ else
                 </div>
                 <?php
                 echo $msgBox;
-                if($listTna > 0)
+                
+                if(count($listTna) > 0)
                 { ?>
                 <div class="listar-registros"> 
                     <table>   
@@ -105,17 +120,16 @@ else
                         <th>Nombre</th>   
                         <th colspan="2">Acciones</th>                                    
                     </tr>
-                    <?php
-                    $cont = 1;	
+                    <?php                    
                     foreach($listTna as $datoTna)
                     {
                         //Aplicar el background intermedio
-                        $mod = $cont/2 ;
+                        $mod = $pag/2 ;
                         if(is_int($mod)){ $img = "class='listar-tr-1'";$class = "listar-tr-1";}
                         else{$img ="class='listar-tr-2'";$class = "listar-tr-2";}
                         ?>	
                         <tr <?php echo $img ?> onMouseOver="this.className='listar-resaltar'" onMouseOut="this.className='<?php echo $class ?>'"	 > 
-                            <td><?php echo $cont ?></td>
+                            <td><?php echo $pag+1 ?></td>
                             <td><?php echo $datoTna->tna_nom ?></td>														   
                             <td>
                                 <div>										
@@ -132,10 +146,10 @@ else
                                 </div>
                             </td>																		                                 
                         </tr>
-                    <?php  $cont++; } ?>
-                    </table>														                    
-                </div>
-                <?php
+                    <?php  $pag++; } ?>
+                    </table>                    
+                </div>      
+                <?php echo $this->pagination->create_links();               
                 } 
                 else{ 
                 ?><br />

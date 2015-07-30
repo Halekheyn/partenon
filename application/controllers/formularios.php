@@ -9,9 +9,39 @@ class Formularios extends CI_Controller {
     }
     	
     /*----------TIPO NIVEL ACADEMICO---------------*/
-    public function f_tna($cod=null)
+    public function f_tna()
     {				
-        $listTna = $this->formularios_model->listTna();
+        /**
+         * Creamos el código de la paginación
+         */
+        if($this->uri->segment(4)){
+            $pag = $this->uri->segment(4);
+        }else{
+            $pag = 0;
+        }
+        
+        $rowsPag = 10;
+        $listTna = $this->formularios_model->listTna($rowsPag,$pag,'limit');
+        $listAllTna = $this->formularios_model->listTna($rowsPag,$pag,'cuantos');
+                
+        $config['base_url'] = base_url().'formularios/f_tna/pag/';
+        $config['total_rows'] = $listAllTna;
+        $config['per_page'] = $rowsPag;
+        $config['uri_segment'] = '4';
+        $config['num_links'] = '2';
+        //Marca de Cierre
+        $config['full_tag_open'] = '<div class="paginacion">';
+        $config['full_tag_close'] = '</div>';
+        //Enlace Primero
+        $config['first_link'] = 'Primero'; 
+        //Enlace Ultimo
+        $config['last_link'] = 'Ultimo';
+        //Enlace Actual
+        $config['cur_tag_open'] = '<span><strong>';
+        $config['cur_tag_close'] = '</span></strong>';
+        $config['next_link'] = '&gt;';
+        $config['prev_link'] = '&lt;';        
+        $this->pagination->initialize($config);
         				
         //---Guardar---
         if($this->input->post('btnSaveTna'))
@@ -78,7 +108,7 @@ class Formularios extends CI_Controller {
         //$this->layout->setDescripcion('Plataforma virtual para comunidad educativa, comunicación docente - estudiantes - padres de familia y administrativos');
         //Vista        
         $var = 0;
-        $this->layout->view('f_tna',compact('var','listTna'));		
+        $this->layout->view('f_tna',compact('var','listTna','pag'));		
     }   
 }
 
