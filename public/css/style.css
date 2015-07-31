@@ -301,5 +301,23 @@ dl dd a:hover {text-decoration:underline; color:#333;}
 	font-style:italic;
 	padding:3px;
 	}
+        
+/*-----PAGINACION-----*/
+.paginacion{
+    margin: 0 auto;
+    width: auto;
+    text-align: center;
+}
 
+/*--Pagina Actual y Enlaces--*/
+.paginacion span, .paginacion a{
+    color:#01a5ca;
+    margin: -3px;
+    padding: 9px;
+}
+
+/*--Enlaces visitados--*/
+.paginacion a:visited{
+    color:#1483ff;
+}
 
