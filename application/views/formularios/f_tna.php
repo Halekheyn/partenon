@@ -110,7 +110,8 @@ else
                 </div>
                 <?php
                 echo $msgBox;
-                if($listTna > 0)
+                
+                if(count($listTna) > 0)
                 { ?>
                 <div class="listar-registros"> 
                     <table>   
