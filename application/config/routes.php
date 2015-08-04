@@ -48,3 +48,7 @@ $route['nosotros']= "index/nosotros";
 $route['contactenos']= "index/contactenos";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
+
+
+//---Filtrado de las URL
+//$route['formularios/f_tna/search/(:num)'] = "formularios/f_tna/search/$1";

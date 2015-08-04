@@ -1,5 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class Formularios extends CI_Controller {
 	
     public function __construct()
@@ -20,9 +19,9 @@ class Formularios extends CI_Controller {
             $pag = 0;
         }
         
-        $rowsPag = 10;
+        $rowsPag = 2;
         $listTna = $this->formularios_model->listTna($rowsPag,$pag,'limit');
-        $listAllTna = $this->formularios_model->listTna($rowsPag,$pag,'cuantos');
+        $listAllTna = $this->formularios_model->listTna($rowsPag,$pag,'all');
                 
         $config['base_url'] = base_url().'formularios/f_tna/pag/';
         $config['total_rows'] = $listAllTna;
@@ -83,7 +82,6 @@ class Formularios extends CI_Controller {
             if($this->form_validation->run('formularios/f_tna'))
             {
                 $nomTna = ucwords($this->input->post('inpNomTna',true));
-
                 $searchTna = $this->formularios_model->mSearchTna($nomTna);
                 if($searchTna)
                 {
@@ -111,6 +109,5 @@ class Formularios extends CI_Controller {
         $this->layout->view('f_tna',compact('var','listTna','pag'));		
     }   
 }
-
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

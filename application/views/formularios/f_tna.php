@@ -6,7 +6,11 @@ if($this->session->flashdata('msg') != '')
    $fdNomTna = $this->session->flashdata('nomTna');  
    $msgBox = "<div id='msg' >
                 <div class='$tipo'>$msg</div>                                                   
-             </div> ";                                                     
+             </div> ";  
+   if(!isset($listTna))
+   {
+       $listTna = 0;
+   }
  }
 else
 {

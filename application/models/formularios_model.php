@@ -28,40 +28,62 @@ class formularios_model extends CI_Model
     }
     
     //----BUSCAR----
-    public function mSearchTna($nomTna)
+    public function mSearchTna($nomTna,$queHago,$pag,$rowsPag)
     {
-        $query=$this->db
-        ->select("tna_cod,tna_nom")
-        ->from("tipo_nivel_academico")
-        ->like('tna_nom',$nomTna,'after')
-        ->get();
-        //echo $this->db->last_query();
-        if($query->num_rows() > 0)
-        {			
-            return $query->result();
-        }else{				
-            return $query->result();	
+        switch ($queHago)
+        {
+            case 'limitSearch':
+                $query=$this->db
+                ->select('tna_cod,tna_nom')
+                ->from('tipo_nivel_academico')
+                ->like('tna_nom',$nomTna,'after')
+                ->order_by('tna_nom')                
+                ->limit($rowsPag,$pag)
+                ->get();
+                //echo $this->db->last_query();
+                return $query->result();
+            break;
+           
+            case 'allSearch':
+                $query=$this->db
+                ->select("tna_cod,tna_nom")
+                ->from("tipo_nivel_academico")
+                ->like('tna_nom',$nomTna,'after')
+                ->count_all_results();
+                //echo $this->db->last_query();
+                return $query;
+            break;
         }
-    }  /* 
-    public function act_id_tna($id_act)
+    }
+    
+    //----Actualizar----
+    /*public function actTna($codTna,$queHago,$regActTna)
     { 
-        $where = array('tna_cod'=>$id_act);
-        $query=$this->db
-        ->select("tna_cod,tna_nom")
-        ->from("tipo_nivel_academico")
-        ->where($where)
-        ->get();
-        //echo $this->db->last_query();
-        return $query->row();
-    }
-
-    public function actualizar_tna($datos_act=array(),$id_tna)
-    {
-        $this->db->where("id",$id_tna);		 
-        $this->db->update("tipo_nivel_academico");
-    	return true;
-    }
-      */
+        switch ($queHago)
+        {
+            case 'query':
+                $where = array('tna_cod'=>$codTna);
+                $query=$this->db
+                ->select('tna_cod,tna_nom')
+                ->from('tipo_nivel_academico')
+                ->where($where)                        
+                ->get();
+                //echo $this->db->last_query();
+                return $query->result();
+            break;
+            
+            case 'update':
+                $condicion = 'tna_cod = 1'; 
+                $queryUpdate = $this->db->update_string('tipo_nivel_academico',$regActTna,$condicion);
+                if($queryUpdate)
+                {			
+                    return true;
+                }else{				
+                    return false;	
+                }           
+            break;
+        }
+    } */  
    
     //----LISTAR----
     public function listTna($pag,$rowsPag,$queHago)
@@ -79,7 +101,7 @@ class formularios_model extends CI_Model
                 return $query->result();
             break;
            
-            case 'cuantos':
+            case 'all':
                 $query=$this->db
                 ->select("tna_cod,tna_nom")
                 ->from("tipo_nivel_academico")
