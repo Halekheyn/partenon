@@ -13,19 +13,30 @@
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url()?>public/css/style.css">    
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url()?>public/css/grid_12.css">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url()?>public/css/ie.css">
+    
+    <!--Datatables CSS-->    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>public/css/jquery.dataTables.css">
       
     <!-- Auxiliares CSS-->
     <?php echo $this->layout->css; ?> 
     <!-- Fin Auxiliares CSS -->
     
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif&subset=latin' rel='stylesheet' type='text/css'>
+    <!--Fuente -->
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif&subset=latin" rel="stylesheet" type="text/css">
 
-	<script src="<?php echo base_url()?>public/js/jquery-1.7.min.js"></script>
+    <!--JS Principales-->
+    <!--Jquery Datatables-->
+    <script type="text/javascript" language="javascript" src="<?php echo base_url()?>public/js/jquery-1.11.1.min.js"></script>
+    <!--JS Pluggin Datatables-->
+    <script type="text/javascript" language="javascript" src="<?php echo base_url()?>public/js/jquery.dataTables.min.js"></script>
+    <!--<script src="<?php //echo base_url()?>public/js/jquery-1.7.min.js"></script>-->
+    
+    <!--Principal-->
     <script src="<?php echo base_url()?>public/js/jquery.easing.1.3.js"></script>
 
     <!-- Auxiliares JS-->
-	<?php echo $this->layout->js; ?> 
-	<!-- Fin Auxiliares JS-->
+    <?php echo $this->layout->js; ?> 
+    <!-- Fin Auxiliares JS-->
     
     
     <!--[if lt IE 8]>

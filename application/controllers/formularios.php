@@ -9,21 +9,24 @@ class Formularios extends CI_Controller {
     	
     /*----------TIPO NIVEL ACADEMICO---------------*/
     public function f_tna()
-    {				
+    {	
+        $pag = 0;
+        $rowsPag = 20;
+        $listTna = $this->formularios_model->listTna($rowsPag,$pag,'limit');
+        $listAllTna = $this->formularios_model->listTna($rowsPag,$pag,'all');
         /**
          * Creamos el código de la paginación
          */
-        if($this->uri->segment(4)){
+        /*if($this->uri->segment(4)){
             $pag = $this->uri->segment(4);
         }else{
             $pag = 0;
         }
         
-        $rowsPag = 2;
-        $listTna = $this->formularios_model->listTna($rowsPag,$pag,'limit');
-        $listAllTna = $this->formularios_model->listTna($rowsPag,$pag,'all');
+        
+        
                 
-        $config['base_url'] = base_url().'formularios/f_tna/pag/';
+        /*$config['base_url'] = base_url().'formularios/f_tna/pag/';
         $config['total_rows'] = $listAllTna;
         $config['per_page'] = $rowsPag;
         $config['uri_segment'] = '4';
@@ -41,7 +44,7 @@ class Formularios extends CI_Controller {
         $config['next_link'] = '&gt;';
         $config['prev_link'] = '&lt;';        
         $this->pagination->initialize($config);
-        				
+        */				
         //---Guardar---
         if($this->input->post('btnSaveTna'))
         {						
@@ -75,17 +78,18 @@ class Formularios extends CI_Controller {
                     redirect(base_url().'formularios/f_tna');             
                 }
             }            				
-        }
+        }        
         //---Buscar---
         if($this->input->post('btnSearchTna'))
         {						
             if($this->form_validation->run('formularios/f_tna'))
             {
                 $nomTna = ucwords($this->input->post('inpNomTna',true));
-                $searchTna = $this->formularios_model->mSearchTna($nomTna);
+                $searchTna = $this->formularios_model->mSearchTna($nomTna,'limitSearch',$pag,$rowsPag);
                 if($searchTna)
                 {
                     $listTna = $searchTna;
+                    $listAllTna = $this->formularios_model->listTna($nomTna,'allSearch',$pag,$rowsPag);
                 }
                 else 
                 {

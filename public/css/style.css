@@ -108,7 +108,7 @@ ul.menu li a:hover, ul.menu li.current a {color:#01a5ca;}
 	display: inline-block;
 	margin-top: 19px;
 }
-.login_button {background:#f4f4f4; font-size:14px; line-height:18px; color:#01a5ca; text-transform:uppercase; display:inline-block; padding:12px 28px 13px 28px; margin:15px 0px 0 0;}
+.login_button {background:#f4f4f4; font-size:14px; line-height:18px; color:#01a5ca; text-transform:capitalize; display:inline-block; padding:12px 28px 13px 28px; margin:15px 0px 0 0;}
 .login_button:hover {background:#d3d1d1; color:#333; }
 
 .box-2>div {float:left; width:170px; margin-right:30px;}
@@ -206,7 +206,7 @@ dl dd a:hover {text-decoration:underline; color:#333;}
 	/*border:#000 1px solid;*/
 }
 
-.listar-registros th
+#listar-reg-th 
 {
 	background:#01a5ca;
 	color:#FFF;	
@@ -301,23 +301,6 @@ dl dd a:hover {text-decoration:underline; color:#333;}
 	font-style:italic;
 	padding:3px;
 	}
-        
-/*-----PAGINACION-----*/
-.paginacion{
-    margin: 0 auto;
-    width: auto;
-    text-align: center;
-}
+  
 
-/*--Pagina Actual y Enlaces--*/
-.paginacion span, .paginacion a{
-    color:#01a5ca;
-    margin: -3px;
-    padding: 9px;
-}
-
-/*--Enlaces visitados--*/
-.paginacion a:visited{
-    color:#1483ff;
-}
 
